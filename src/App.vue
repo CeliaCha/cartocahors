@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-      <Menu/>
-      <CityMap/>
+      <Menu v-on:userChoice="passUserChoice"/>
+      <CityMap :selected="selectedPlaces"/>
     </div>
 </template>
 
@@ -16,7 +16,17 @@ export default {
       Menu,
       CityMap
     },
-
+    data() {
+      return {
+        selectedPlaces: {}
+      }
+    },
+    methods: {
+      passUserChoice(places) {
+        this.selectedPlaces = places
+      }
+    },
+    
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="item in data.children" :key="item.name" @click='selectSubCat(item)'>
+        <div v-for="item in data.children" :key="item.name" @click='passUserChoice(item)'>
             {{ item.name }}
         </div>
     </div>
@@ -11,9 +11,8 @@
         name : 'Subcategorie',
         props : ['data'],
         methods: {
-            selectSubCat(places) {
-                console.log(places)
-                this.$emit('categorySelected', places)
+            passUserChoice(places) {
+                this.$emit('userChoice', places)
             }
         },
         
