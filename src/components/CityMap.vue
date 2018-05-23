@@ -1,6 +1,6 @@
 <template>
 
-    <div id="general" class="container">
+    <div class="container">
         <div class="row">
             
             <div class="col-md-12">
@@ -17,13 +17,14 @@
 
     // voir tuto : https://travishorn.com/interactive-maps-with-vue-leaflet-5430527353c8
     export default {
-        name: '#general',
 
         /* Data properties will go here */
-        data: {
-            map: null,
-            tileLayer: null,
-            layers: [],
+        data () {
+            return {
+                map: null,
+                tileLayer: null,
+                layers: [],
+            }
         },
 
         /* Code to run when app is mounted */

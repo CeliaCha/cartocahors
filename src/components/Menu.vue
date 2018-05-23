@@ -21,11 +21,10 @@ export default {
   data() {
     return {
       list: json
-    };
+    }
   },
   mounted() {
-    console.log(this.categoriesNames)
-    console.log(this.subcategories)
+
   },
   computed: {
     
