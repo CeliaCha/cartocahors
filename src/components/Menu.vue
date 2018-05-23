@@ -1,17 +1,17 @@
 <template>
     <div>
-        <div v-for="item in list" :key="item.name">
-            <h3>{{ item.name }}</h3>
-            <Subcategorie :data="item"/>
+        <div v-for="item in list" :key="item.name" class="category">
+            <b-btn v-b-toggle="item.name" class="m-1">{{ item.name }}</b-btn>
+            <b-collapse v-bind:id="item.name">
+                <Subcategorie :data="item"/>
+            </b-collapse>
         </div>
-
-
     </div>
 </template>
 
 <script>
 import Subcategorie from './Subcategorie'
-import json from "../assets/places.json";
+import json from "../assets/places.json"
 
 export default {
   name: "Menu",
@@ -24,39 +24,18 @@ export default {
     };
   },
   mounted() {
-    // DEV
-    // for (let item in this.list) {
-    //   console.log(this.list[item].name);
-    // }
-    console.log(this.categoriesNames);
-    console.log(this.subcategories);
-    console.log(this.places);
+    console.log(this.categoriesNames)
+    console.log(this.subcategories)
   },
   computed: {
-    categoriesNames() {
-        let categoriesNames = []
-        for (let item in this.list) {
-            categoriesNames.push(this.list[item].name)
-        }
-        return categoriesNames
-    },
-    subcategories() {
-      let subcategories = [];
-      for (let item in this.list) {
-        subcategories.push(this.list[item].children);
-      }
-      return subcategories;
-    },
-    places() {
-      let places = [];
-      for (let item in this.subcategories) {
-        places.push(this.subcategories[item].places);
-      }
-      return places;
-    }
+    
   }
-};
+}
+
 </script>
 
 <style scoped>
+    b-btn {
+        min-width: 300px;
+    }
 </style>
