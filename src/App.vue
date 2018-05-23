@@ -1,18 +1,23 @@
 <template>
     <div id="app">
-        <CityMap/>
+      <Menu/>
+      <CityMap/>
     </div>
 </template>
 
 <script>
-    import CityMap from './components/CityMap'
+import Menu from './components/Menu'
+import CityMap from './components/CityMap'
 
-    export default {
-        name: 'App',
-        components: {
-            CityMap,
-        }
-    }
+
+export default {
+  name: 'App',
+      components: {
+      Menu,
+      CityMap
+    },
+
+}
 </script>
 
 
