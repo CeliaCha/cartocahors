@@ -1,25 +1,42 @@
 <template>
-    <div>
-        <div v-for="item in data.children" :key="item.name" @click='selectSubCat(item)'>
+
+    <div class="sub m-2">
+        <div v-for="item in data" :key="item.id" @click='selectSubCat(item)'>
             {{ item.name }}
         </div>
     </div>
+    
 </template>
+
 
 <script>
     export default {
-        name : 'Subcategorie',
         props : ['data'],
+
         methods: {
-            selectSubCat(places) {
-                console.log(places)
-                this.$emit('categorySelected', places)
+            
+            selectSubCat(item) {
+                console.log(item)
+                this.$emit('categorySelected', item)
             }
-        },
-        
+            
+        }, 
     }
 </script>
 
-<style scoped>
 
+<style scoped>
+    .sub {
+        color: #007BFF;
+        text-transform: lowercase;
+        padding-left: 5%;
+        font-family: 'Quicksand', sans-serif;
+    }
+    .sub::first-letter {
+        text-transform: uppercase;
+    }
+    .sub:hover {
+        color:rgba(29, 74, 122, 0.733);
+        cursor: pointer;
+    }
 </style>
