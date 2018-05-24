@@ -1,5 +1,4 @@
 <template>
-
     <div class="col-md-3">
         <div v-for="item in list" :key="item.id">
 
@@ -8,17 +7,15 @@
             </b-btn>
             
             <b-collapse v-bind:id="item.id">
-                <Subcategorie :data="item.children"/>
+                <Subcategorie v-on:userChoice="passUserChoice" :data="item.children"/>
             </b-collapse>
 
         </div>
     </div>
-    
 </template>
 
 
 <script>
-
     import Subcategorie from './Subcategorie'
     import json from "../assets/places.json"
 
@@ -26,20 +23,21 @@
         components : {
             Subcategorie
         },
-
         data() {
             return {
                 list: json
             }
         },
-
+        methods: {
+            passUserChoice(item) {
+                this.$emit('userChoice', item)
+            }
+        },
     }
-
 </script>
 
 
 <style scoped>
-    
     button {
         font-weight: bolder;
         font-family: 'Quicksand', sans-serif;
@@ -47,5 +45,4 @@
     button::first-letter {
         text-transform: uppercase;
     }
-
 </style>
