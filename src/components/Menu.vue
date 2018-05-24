@@ -6,7 +6,7 @@
                 {{ item.name }}
             </b-btn>
             
-            <b-collapse v-bind:id="item.id">
+            <b-collapse :id="item.id">
                 <Subcategorie v-on:userChoice="passUserChoice" :data="item.children"/>
             </b-collapse>
 
