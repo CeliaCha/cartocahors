@@ -6,7 +6,7 @@
 
 
 <script>
-    import bidouillage from '../assets/bidouillage.json'
+    import svgIcons from '../assets/icons.json'
 
     // voir tuto : https://travishorn.com/interactive-maps-with-vue-leaflet-5430527353c8
     export default {
@@ -57,10 +57,8 @@
                         for (let index in infosList) {
                             let longitude = infosList[index][0]
                             let latitude = infosList[index][1]
-                            // console.log(this.selected.icon);
-
                             let customIcon =    L.icon({
-                                                    iconUrl : bidouillage[this.selected.icon],
+                                                    iconUrl : svgIcons[this.selected.icon],
                                                     iconSize: [40, 40],
                                                 })
 
@@ -70,7 +68,6 @@
 
                             this.markerList.push(marker)
                         }
-                        
                         L.layerGroup(this.markerList).addTo(this.map)
                     }
                 }
