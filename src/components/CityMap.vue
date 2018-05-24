@@ -6,6 +6,8 @@
 
 
 <script>
+    import bidouillage from '../assets/bidouillage.json'
+
     // voir tuto : https://travishorn.com/interactive-maps-with-vue-leaflet-5430527353c8
     export default {
         data () {
@@ -20,7 +22,6 @@
         mounted() {
             this.initMap();
         },
-
 
         methods: {
             initMap() {
@@ -41,31 +42,40 @@
             selected: {
                 handler() {
                     if (this.selected.places) {
-                        
-                        let placesList = this.selected.places
-                        let coordsList = []
+                        let placesList = this.selected.places;
+                        let infosList = [];
 
                         for (let index in placesList) {
-                            let coords = []
+                            let infos = [];
 
-                            coords.push(placesList[index].lat)
-                            coords.push(placesList[index].lon)
-                            coordsList.push(coords)
-                            
+                            infos.push(placesList[index].lat)
+                            infos.push(placesList[index].lon)
+                            infos.push(placesList[index].description)
+                            infosList.push(infos)
                         }
 
-                        for (let index in coordsList) {
-                            let longitude   =   coordsList[index][0] //
-                            let latitude    =   coordsList[index][1]
-                            let description =   placesList[index].description
-                            let marker      =   L.marker([longitude, latitude]).bindPopup(description)
+                        for (let index in infosList) {
+                            let longitude = infosList[index][0]
+                            let latitude = infosList[index][1]
+                            // console.log(this.selected.icon);
+
+                            let customIcon =    L.icon({
+                                                    iconUrl : bidouillage[this.selected.icon],
+                                                    iconSize: [40, 40],
+                                                })
+
+                            let marker = L.marker([longitude, latitude], {icon: customIcon})
+                                            .bindPopup(infosList[index][2])
+                                            .addTo(this.map)
+
                             this.markerList.push(marker)
                         }
+                        
                         L.layerGroup(this.markerList).addTo(this.map)
                     }
                 }
             }
-        },
+        }
     };
 </script>
 
