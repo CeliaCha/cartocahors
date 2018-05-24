@@ -12,6 +12,7 @@
             return {
                 map: null,
                 tileLayer: null,
+                markerList: [],
             }
         },
         props: ["selected"],
@@ -19,6 +20,7 @@
         mounted() {
             this.initMap();
         },
+
 
         methods: {
             initMap() {
@@ -39,6 +41,7 @@
             selected: {
                 handler() {
                     if (this.selected.places) {
+                        
                         let placesList = this.selected.places
                         let coordsList = []
 
@@ -48,13 +51,17 @@
                             coords.push(placesList[index].lat)
                             coords.push(placesList[index].lon)
                             coordsList.push(coords)
+                            
                         }
 
                         for (let index in coordsList) {
-                            let longitude   =   coordsList[index][0]
+                            let longitude   =   coordsList[index][0] //
                             let latitude    =   coordsList[index][1]
-                            let marker      =   L.marker([longitude, latitude]).addTo(this.map);
+                            let description =   placesList[index].description
+                            let marker      =   L.marker([longitude, latitude]).bindPopup(description)
+                            this.markerList.push(marker)
                         }
+                        L.layerGroup(this.markerList).addTo(this.map)
                     }
                 }
             }
