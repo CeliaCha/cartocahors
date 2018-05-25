@@ -1,24 +1,21 @@
 <template>
     <div >
-        <div v-for="item in data" :key="item.id" @click='passUserChoice(item)' class="sub m-2">
+        <div v-for="item in data.children" :key="item.id" @click='passUserChoice(item, data.color)' class="sub m-2">
             {{ item.name }}
         </div>
     </div>
 </template>
 
-
 <script>
     export default {
         props : ['data'],
-
         methods: {
-            passUserChoice(item) {
-                this.$emit('userChoice', item)
+            passUserChoice(item, color) {
+                this.$emit('userChoice', [item, color])
             }
         }, 
     }
 </script>
-
 
 <style scoped>
     .sub {

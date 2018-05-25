@@ -7,7 +7,7 @@
             </b-btn>
             
             <b-collapse :id="item.id">
-                <Subcategorie v-on:userChoice="passUserChoice" :data="item.children"/>
+                <Subcategorie v-on:userChoice="passUserChoice" :data="item"/>
             </b-collapse>
 
         </div>
@@ -17,15 +17,12 @@
 
 <script>
     import Subcategorie from './Subcategorie'
-    // import json from "../assets/places.json"
 
     export default {
         props : ['list'],
-        
         components : {
             Subcategorie
         },
-       
         methods: {
             passUserChoice(item) {
                 this.$emit('userChoice', item)
