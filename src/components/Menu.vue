@@ -17,17 +17,15 @@
 
 <script>
     import Subcategorie from './Subcategorie'
-    import json from "../assets/places.json"
+    // import json from "../assets/places.json"
 
     export default {
+        props : ['list'],
+        
         components : {
             Subcategorie
         },
-        data() {
-            return {
-                list: json
-            }
-        },
+       
         methods: {
             passUserChoice(item) {
                 this.$emit('userChoice', item)
