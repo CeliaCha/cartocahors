@@ -1,6 +1,6 @@
 <template>
-    <div class="sub m-2">
-        <div v-for="item in data" :key="item.id" @click='passUserChoice(item)'>
+    <div >
+        <div v-for="item in data" :key="item.id" @click='passUserChoice(item)' class="sub m-2">
             {{ item.name }}
         </div>
     </div>
