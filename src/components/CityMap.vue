@@ -8,13 +8,14 @@
 <script>
     // voir tuto : https://travishorn.com/interactive-maps-with-vue-leaflet-5430527353c8
     export default {
+        props: ["selected"],
+
         data () {
             return {
                 map: null,
                 tileLayer: null,
             }
         },
-        props: ["selected"],
 
         mounted() {
             this.initMap();
