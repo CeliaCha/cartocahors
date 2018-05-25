@@ -43,7 +43,11 @@
             selected: {
                 handler() {
                     if (this.selected.places) {
-                        let placesList = this.selected.places;
+                        for (let marker of this.markerList) {
+                            this.map.removeLayer(marker)
+                        }
+
+                        let placesList = this.selected.places
                         let infosList = [];
 
                         for (let index in placesList) {
@@ -60,7 +64,7 @@
                             let latitude = infosList[index][1]
                             let customIcon =    L.icon({
                                                     iconUrl : svgIcons[this.selected.icon],
-                                                    iconSize: [40, 40],
+                                                    iconSize: [30, 30],
                                                 })
 
                             let marker = L.marker([longitude, latitude], {icon: customIcon})
@@ -69,7 +73,6 @@
 
                             this.markerList.push(marker)
                         }
-                        L.layerGroup(this.markerList).addTo(this.map)
                     }
                 }
             }
@@ -84,3 +87,6 @@
         width: 100vw;
     }
 </style>
+
+
+
