@@ -25,7 +25,7 @@
 
         methods: {
             initMap() {
-                this.map = L.map('map').setView([44.4491, 1.43663], 14);
+                this.map = L.map('map').setView([44.4491, 1.454], 14);
                 this.tileLayer = L.tileLayer(
                     'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
                     {
