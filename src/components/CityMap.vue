@@ -12,8 +12,8 @@
         props: ["selected", "selectedColor"],
         data () {
             return {
-                map: null,
-                tileLayer: null,
+                map       : null,
+                tileLayer : null,
                 markerList: [],
             }
         },
@@ -37,7 +37,7 @@
         watch: {
             selected: {
                 handler() {
-                    
+
                     if (this.selected.places) {
                         for (let marker of this.markerList) {
                             this.map.removeLayer(marker)
@@ -45,7 +45,7 @@
 
                         let placesList = this.selected.places
                         let infosList = [];
-                        
+
                         for (let index in placesList) {
                             let infos = [];
 
@@ -60,15 +60,15 @@
                             let longitude = infosList[index][0]
                             let latitude = infosList[index][1]
                             let customIcon =    L.icon({
-                                                    iconUrl:    svgIcons[this.selected.icon],
-                                                    iconSize:   [30, 30],
+                                                    iconUrl: svgIcons[this.selected.icon],
+                                                    iconSize: [30, 30],
                                                 })
 
-                            
+
                             let marker = L.marker(
                                                 [longitude, latitude],
                                                 {icon: customIcon},
-                                                
+
                                                 )
                                             .bindPopup(infosList[index][2])
                                             .addTo(this.map)
@@ -84,9 +84,6 @@
 <style scoped>
     .map {
         height: 100vh;
-        width: 100vw;
-    }
+        width:  100vw;
+    }   
 </style>
-
-
-
